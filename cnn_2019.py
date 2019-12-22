@@ -140,24 +140,25 @@ if __name__ == '__main__':
     # valid_data = CaptchaSequence(characters, batch_size=128, steps=100)
     callbacks = [EarlyStopping(patience=3), CSVLogger('cnn.csv'), ModelCheckpoint('cnn_best.h5', save_best_only=True)]
     model.compile(loss='categorical_crossentropy',
-                  optimizer=Adam(1e-4, amsgrad=True),
+                  optimizer=Adam(1e-3, amsgrad=True),
                   metrics=['accuracy'])
     # model.fit_generator(train_data, epochs=100, validation_data=valid_data, workers=4, use_multiprocessing=True,
     #                     callbacks=callbacks)
     X_train, y_train = gen_data('C:\\Users\\miee06\\Desktop\\train', characters)
-    model.fit(x=X_train, y=y_train, epochs=50, callbacks=callbacks)
+    model.fit(x=X_train, y=y_train, epochs=20, callbacks=callbacks)
     model.save('cnn_best.h5', include_optimizer=False)
     # ### 载入最好的模型继续训练一会
     # In[9]:
-    # model.load_weights('cnn_best.h5')
-    # callbacks = [EarlyStopping(patience=3), CSVLogger('cnn.csv', append=True),
-    #              ModelCheckpoint('cnn_best.h5', save_best_only=True)]
-    # model.compile(loss='categorical_crossentropy',
-    #               optimizer=Adam(1e-4, amsgrad=True),
-    #               metrics=['accuracy'])
+    model.load_weights('cnn_best.h5')
+    callbacks = [EarlyStopping(patience=3), CSVLogger('cnn.csv', append=True),
+                 ModelCheckpoint('cnn_best.h5', save_best_only=True)]
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=Adam(1e-4, amsgrad=True),
+                  metrics=['accuracy'])
     # model.fit_generator(train_data, epochs=100, validation_data=valid_data, workers=4, use_multiprocessing=True,
     #                 callbacks=callbacks)
-    #model.fit(x=X_train, y=y_train, epochs=20, callbacks=callbacks)
+    model.fit(x=X_train, y=y_train, epochs=15, callbacks=callbacks)
+    model.save('cnn.h5', include_optimizer=False)
     # loss,accuracy = model.evaluate()
     # print('\ntrain: loss',loss )
     # print('train: accurancy', accuracy)
@@ -194,11 +195,11 @@ if __name__ == '__main__':
     # # 可视化训练曲线
     # pip install pandas
     # In[14]:
-    import pandas as pd
-
-    df = pd.read_csv('cnn.csv')
-    df[['loss', 'val_loss']].plot()
-    plt.show()
-    # In[15]:
-    df[['loss', 'val_loss']].plot(logy=True)
-    plt.show()
+    # import pandas as pd
+    #
+    # df = pd.read_csv('cnn.csv')
+    # df[['loss', 'val_loss']].plot()
+    # plt.show()
+    # # In[15]:
+    # df[['loss', 'val_loss']].plot(logy=True)
+    # plt.show()

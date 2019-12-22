@@ -40,10 +40,10 @@ def decode(y):
 
 if __name__ == '__main__':
     characters = string.digits + string.ascii_lowercase
-    model = load_model('cnn_best.h5')
+    model = load_model('cnn.h5')
     X1 = np.zeros((1, 40, 100, 3), dtype=np.float32)
-    y1='rbbt'
-    im = Image.open(r'temp_pics/rbbt_86477647b1b2815c09f944d90f0448bf.jpg')
+    y1='q6ul'
+    im = Image.open(r'temp_pics/q6ul_6695ab6dde1e537cc3fe3458c72c7677.jpg')
     X1[0]=np.array(im) / 255.0
     y_pred = model.predict(X1)
     print(decode(y_pred))

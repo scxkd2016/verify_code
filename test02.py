@@ -33,6 +33,6 @@ def evaluate(model):
 
 if __name__ == '__main__':
     characters = string.digits + string.ascii_lowercase
-    model = load_model('cnn_best.h5')
+    model = load_model('cnn.h5')
     X_test, y_test = gen_data('C:\\Users\\miee06\\Desktop\\test', characters)
     print(evaluate(model))
