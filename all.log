@@ -1,0 +1,7 @@
+2019-12-23 20:51:16,238 - D:/PythonCode/verify_code/test01.py[line:49] - INFO: 打印信息
+2019-12-23 20:52:29,363 - D:/PythonCode/verify_code/test01.py[line:49] - INFO: 打印信息
+2019-12-23 20:52:51,510 - D:/PythonCode/verify_code/test01.py[line:49] - INFO: 打印信息
+2019-12-23 20:52:55,755 - D:/PythonCode/verify_code/test01.py[line:66] - ERROR: list index out of range
+2019-12-23 20:55:13,816 - D:/PythonCode/verify_code/test01.py[line:50] - INFO: 打印信息
+2019-12-23 20:57:06,581 - .\test01.py[line:50] - INFO: 打印信息
+2019-12-23 20:57:10,943 - .\test01.py[line:67] - ERROR: list index out of range
